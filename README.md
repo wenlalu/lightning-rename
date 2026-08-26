@@ -1,7 +1,7 @@
 # 闪电重命名（Lightning Rename）
 
 一款**纯本地、离线、轻量**的 Windows 批量重命名工具。基于 .NET Framework 4.0 开发，单文件约 48KB，无需安装任何额外运行时，可在十年前的旧电脑上流畅运行。
-
+.NET Framework 4.0微软官方下载安装链接：https://dotnet.microsoft.com/zh-cn/download/dotnet-framework/thank-you/net40-offline-installer
 > 面向公司内网/个人用户设计：**全程离线，零联网，零数据收集，零遥测上报**。
 
 ---
