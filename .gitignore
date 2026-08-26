@@ -1,0 +1,20 @@
+# 构建产物
+bin/
+obj/
+ReleaseOut/
+*.exe
+*.dll
+*.pdb
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.csproj.user
+
+# IDE / 系统
+*.o
+*.vcxproj
+Thumbs.db
+Desktop.ini
+.DS_Store
