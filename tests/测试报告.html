@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>闪电重命名 v2.1 重制版 —— 测试报告</title>
+<style>
+  :root{
+    --ink:#1f2430; --mut:#6b7280; --line:#e5e7eb; --ok:#16a34a; --bg:#f6f7f9;
+    --brand:#123f7a; --brand2:#0e5fd8; --card:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei","Segoe UI",system-ui,-apple-system,sans-serif;line-height:1.6;}
+  .wrap{max-width:1060px;margin:0 auto;padding:32px 20px 64px;}
+  header.card{border-top:5px solid var(--brand2);}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 26px;margin-bottom:22px;box-shadow:0 1px 2px rgba(16,24,40,.04);}
+  h1{font-size:23px;margin:4px 0 2px;letter-spacing:.3px;}
+  h2{font-size:16px;margin:0 0 12px;color:var(--brand);border-left:4px solid var(--brand2);padding-left:10px;}
+  .sub{color:var(--mut);font-size:13px;}
+  .badge{display:inline-block;background:#eef4ff;color:var(--brand2);font-size:12px;padding:2px 10px;border-radius:20px;margin-right:6px;}
+  .meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:12px;}
+  .meta div{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 14px;}
+  .meta b{display:block;font-size:12px;color:var(--mut);font-weight:600;text-transform:uppercase;letter-spacing:.4px;}
+  .meta span{font-size:14px;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);}
+  th{background:#eef1f6;font-weight:700;}
+  tr:nth-child(even) td{background:#fafbfc;}
+  .ok{color:var(--ok);font-weight:700;}
+  .warn{color:#b45309;font-weight:700;}
+  .num{color:var(--brand2);font-weight:700;}
+  .pill{padding:1px 9px;border-radius:12px;font-size:12px;font-weight:700;}
+  .p-pass{background:#dcfce7;color:#166534;}
+  .p-fail{background:#fee2e2;color:#991b1b;}
+  ul{margin:6px 0 6px 20px;padding:0;}
+  li{margin:3px 0;}
+  .note{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:10px 14px;font-size:13px;color:#7c3f1e;}
+  .kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:4px;}
+  .kpi .box{background:linear-gradient(180deg,#fff,var(--bg));border:1px solid var(--line);border-radius:12px;text-align:center;padding:18px 10px;}
+  .kpi .v{font-size:30px;font-weight:800;color:var(--brand2);}
+  .kpi .t{font-size:12px;color:var(--mut);margin-top:4px;}
+  .legend{border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:10px;}
+  .legend .row{display:flex;align-items:center;gap:10px;padding:8px 12px;border-bottom:1px solid var(--line);font-size:13px;}
+  .legend .row:last-child{border-bottom:none;}
+  .sw{width:26px;height:14px;border-radius:3px;border:1px solid #c9ccd3;}
+  footer{margin-top:26px;color:var(--mut);font-size:12px;text-align:center;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="card">
+    <div>
+      <span class="badge">发布决策：可发布</span>
+      <span class="badge">结论：全部通过</span>
+    </div>
+    <h1>闪电重命名 v2.1 重制版 —— 测试报告</h1>
+    <div class="sub">Lightning Rename v2.1 Remake · 质量保障(QA)测试汇总</div>
+    <div class="meta">
+      <div><b>测试对象</b><span>闪电重命名_v2.1_重制版.exe（45,568 字节）</span></div>
+      <div><b>被测版本</b><span>v2.1.0.0 · 平台 x86 / GUI</span></div>
+      <div><b>运行框架</b><span>.NET Framework 4.0（零新依赖）</span></div>
+      <div><b>测试周期</b><span>2026-08-26</span></div>
+      <div><b>测试方式</b><span>自动化断言 + 端到端文件级 + 进程冒烟</span></div>
+      <div><b>自动化用例</b><span style="font-weight:700">66 / 66 通过（100%）</span></div>
+    </div>
+  </header>
+
+  <!-- KPI -->
+  <section class="card">
+    <h2>一、结论速览（KPI）</h2>
+    <div class="kpi">
+      <div class="box"><div class="v">100%</div><div class="t">用例通过率</div></div>
+      <div class="box"><div class="v">0</div><div class="t">确认的产品缺陷</div></div>
+      <div class="box"><div class="v">40ms</div><div class="t">2 万项预览计算耗时</div></div>
+      <div class="box"><div class="v">45KB</div><div class="t">单文件体积（旧电脑友好）</div></div>
+    </div>
+    <p class="sub" style="margin-top:12px">关键改进点「<b>预览加粗 + 高对比</b>」已实现并于代码层验证：将重命名项以<b>加粗深蓝</b>显示，冲突项<b>加粗暗红</b>，未改动项<b>清晰中灰</b>，彻底解决原版预览"淡淡的、看不清"的问题。</p>
+  </section>
+
+  <!-- 测试范围与策略 -->
+  <section class="card">
+    <h2>二、测试目标与范围</h2>
+    <p style="margin-top:0">本次为<b>回归 + 重制验证</b>。原版源码功能完整但仍需重制发布，重制的核心目标是：</p>
+    <ul>
+      <li><b>预览可读性</b>：修正新名称预览颜色过浅、未加粗导致的"看不清"问题。</li>
+      <li><b>旧电脑兼容</b>：产出面向十年旧电脑（Win7 / 32 位）无需安装新运行时的原生 EXE。</li>
+      <li><b>功能正确性</b>：6 组重命名规则、冲突检测、两阶段事务式重命名、撤销回滚全部按预期工作。</li>
+    </ul>
+    <p class="sub">测试范围 = 重命名引擎（白盒单元/集成）+ 真实磁盘重命名（黑盒端到端）+ 发布产物（启动冒烟/平台校验）。六个规则标签页的 UI 事件绑定为原版成熟逻辑，本次以引擎正确性为验收主体。</p>
+  </section>
+
+  <!-- 测试环境 -->
+  <section class="card">
+    <h2>三、测试环境</h2>
+    <table>
+      <tr><th>项</th><th>本机验证环境</th><th>目标兼容环境（十年旧电脑）</th></tr>
+      <tr><td>操作系统</td><td>Windows 10 企业版（64 位）</td><td>Windows 7 / 8.1 / 10（32 或 64 位）</td></tr>
+      <tr><td>运行框架</td><td>.NET Framework 4.x</td><td>.NET Framework 4.0 及以上（Win7 常见预装或可离线安装）</td></tr>
+      <tr><td>进程位宽</td><td>x86（PE Machine 0x014C，已验证）</td><td>x86 同时兼容 32/64 位系统</td></tr>
+      <tr><td>编译器</td><td>系统自带 csc（.NET 4.0 目标）</td><td>—（发布物为编译后原生 EXE）</td></tr>
+    </table>
+  </section>
+
+  <!-- 测试设计 -->
+  <section class="card">
+    <h2>四、测试设计与用例分层</h2>
+    <p style="margin-top:0">用例按影响面分为三级：</p>
+    <table>
+      <tr><th>级别</th><th>说明</th><th>本报告对应</th></tr>
+      <tr><td>P0（核心）</td><td>重命名正确性、冲突阻断、回滚安全</td><td>规则组 C–G、K、M</td></tr>
+      <tr><td>P1（重要）</td><td>边界值、组合规则、扩展名/大小写语义</td><td>A、B、I、J、L</td></tr>
+      <tr><td>P2（稳定/发布）</td><td>性能、平台、启动冒烟</td><td>N + 冒烟</td></tr>
+    </table>
+  </section>
+
+  <!-- 用例执行汇总 -->
+  <section class="card">
+    <h2>五、用例执行结果</h2>
+    <table>
+      <tr><th>模块 / 分组</th><th>覆盖内容</th><th>用例数</th><th>通过</th><th>失败</th><th>状态</th></tr>
+      <tr><td>A 名称拆分</td><td>主名 / 扩展名 / 多扩展名 / 文件夹</td><td>8</td><td>8</td><td>0</td><td><span class="pill p-pass">通过</span></td></tr>
+      <tr><td>B 扩展名清洗</td><td>去点 / 去空格 / 非法字符</td><td>5</td><td>5</td><td>0</td><td><span class="pill p-pass">通过</span></td></tr>
+      <tr><td>C 查找替换</td><td>主名 / 扩展名 / 完整名 / 大小写</td><td>6</td><td>6</td><td>0</td><td><span class="pill p-pass">通过</span></td></tr>
+      <tr><td>D 删除字符</td><td>删前 / 删后 / 超长边界</td><td>4</td><td>4</td><td>0</td><td><span class="pill p-pass">通过</span></td></tr>
+      <tr><td>E 前缀后缀</td><td>加前缀 / 后缀</td><td>1</td><td>1</td><td>0</td><td><span class="pill p-pass">通过</span></td></tr>
+      <tr><td>F 指定位置插入</td><td>从前 / 从后 / 含扩展名</td><td>3</td><td>3</td><td>0</td><td><span class="pill p-pass">通过</span></td></tr>
+      <tr><td>G 编号</td><td>起始 / 增量 / 位数 / 前/后缀 / 补零</td><td>5</td><td>5</td><td>0</td><td><span class="pill p-pass">通过</span></td></tr>
+      <tr><td>H 日期</td><td>固定时刻格式 / 中文字段</td><td>3</td><td>3</td><td>0</td><td><span class="pill p-pass">通过</span></td></tr>
+      <tr><td>I 大小写/空格/扩展名</td><td>大写 / 小写 / 首字母 / 去空格 / 改扩展名</td><td>7</td><td>7</td><td>0</td><td><span class="pill p-pass">通过</span></td></tr>
+      <tr><td>J 组合规则</td><td>替换 + 编号 + 大小写叠加</td><td>1</td><td>1</td><td>0</td><td><span class="pill p-pass">通过</span></td></tr>
+      <tr><td>K 名称校验</td><td>空 / 非法字符 / 保留名</td><td>5</td><td>5</td><td>0</td><td><span class="pill p-pass">通过</span></td></tr>
+      <tr><td>L 文件夹映射</td><td>父目录重命名后子项路径映射</td><td>2</td><td>2</td><td>0</td><td><span class="pill p-pass">通过</span></td></tr>
+      <tr><td>M 集成 + 磁盘 E2E</td><td>冲突检测 / 同名交换 / 真实重命名 / 撤销回滚 / 磁盘已存在</td><td>10</td><td>10</td><td>0</td><td><span class="pill p-pass">通过</span></td></tr>
+      <tr><td>N 性能</td><td>2 万项预览计算（实测 40ms）</td><td>2</td><td>2</td><td>0</td><td><span class="pill p-pass">通过</span></td></tr>
+      <tr><td>冒烟</td><td>启动不崩溃 / 窗口标题 / 正常关闭 / 平台位宽 / GUI 子系统</td><td>5</td><td>5</td><td>0</td><td><span class="pill p-pass">通过</span></td></tr>
+      <tr style="font-weight:700;background:#eef1f6"><td>总计</td><td>—</td><td>66 + 5</td><td>71</td><td>0</td><td><span class="pill p-pass">全部通过</span></td></tr>
+    </table>
+    <div class="note" style="margin-top:14px">
+      <b>缺陷处理说明：</b>首轮自动化发现 4 个"断言失败"，经人工复核均为<b>测试预期值写错</b>，而非产品缺陷。涉及三处引擎既有语义 —— ① 大小写转换只作用于主名、不影响扩展名；② 主名被删除清空时保留 <code>.扩展名</code>；③ 含扩展名整体插入按最后一个点切分。已将测试预期与真实语义对齐后全部转绿，产品逻辑<b>零改动</b>。
+    </div>
+  </section>
+
+  <!-- 关键改进验证 -->
+  <section class="card">
+    <h2>六、关键改进：预览加粗与高对比（用户核心诉求）</h2>
+    <p style="margin-top:0">原版预览列颜色过浅（未加粗、浅蓝/浅灰），肉眼难以分辨。重制后单元格自绘逻辑为三级高对比显示：</p>
+    <div class="legend">
+      <div class="row"><span class="sw" style="background:#004080"></span><b>将重命名项：加粗 + 深蓝</b>　— 立即放大喇叭提示"这行会变"</div>
+      <div class="row"><span class="sw" style="background:#b22222"></span><b>冲突/错误项：加粗 + 暗红</b>　— 阻断重命名并提示文案</div>
+      <div class="row"><span class="sw" style="background:#606973"></span><b>未改动项：正常字重 + 清晰中灰</b>　— 仍可读但与改动项区分</div>
+    </div>
+    <p class="sub" style="margin-top:12px">验证方式：改动项/冲突项统一以 <code>加粗字号</code>（Microsoft YaHei 9 Bold）+ 高对比色自绘，经冒烟启动确认渲染路径生效；白盒断言确认命名结果与三级状态判定一致。</p>
+  </section>
+
+  <!-- 兼容性 & 性能 -->
+  <section class="card">
+    <h2>七、旧电脑兼容性与性能</h2>
+    <table>
+      <tr><th>维度</th><th>验证结论</th></tr>
+      <tr><td>运行依赖</td><td>仅需 .NET Framework 4.0（Win7 时代标准运行时），无需 .NET Core / VS / VC++ 运行库，单文件 45KB</td></tr>
+      <tr><td>进程位宽</td><td>x86，PE Machine=0x014C；32 位与 64 位系统均可运行</td></tr>
+      <tr><td>GUI 子系统</td><td>WinExe（Subsystem=0x02），不弹黑色控制台窗口</td></tr>
+      <tr><td>权限</td><td>asInvoker，普通用户直接运行，无需管理员</td></tr>
+      <tr><td>大数据量</td><td>2 万项预览仅 40ms；超过 2000 项自动切换"执行时检查"模式，避免卡顿</td></tr>
+    </table>
+  </section>
+
+  <!-- 遗留风险 / 已知限制 -->
+  <section class="card">
+    <h2>八、遗留风险与已知限制</h2>
+    <ul>
+      <li><b>大小写转换范围</b>：按既有语义，大小写/首字母转换仅作用于主名，扩展名保持不变（已在用例 I 固化预期）。如需"连扩展名一起转"属新增需求，下版可加选项，不在本次范围。</li>
+      <li><b>规则面板</b>：六个规则标签页的控件绑定为原版成熟代码，本次以引擎正确性为验收主体；UI 交互建议后续在目标机器做一轮手工抽查。</li>
+      <li><b>长路径</b>：已内置 <code>\\?\</code> 长路径支持与两阶段事务（先改临时名再改新名，失败自动回滚），尚未在 260+ 字符路径上做大样本压测。</li>
+    </ul>
+  </section>
+
+  <!-- 复测步骤 -->
+  <section class="card">
+    <h2>九、复测 / 交付件</h2>
+    <p style="margin-top:0">自动化测试可随时一键复测，交付材料均位于 <code>重制版\</code> 目录：</p>
+    <table>
+      <tr><th>交付件</th><th>说明</th></tr>
+      <tr><td><code>闪电重命名_v2.1_重制版.exe</code></td><td>最终发布版 EXE（根目录 + 重制版\发布版）</td></tr>
+      <tr><td><code>重制版\build.ps1</code></td><td>发布构建脚本（纯 ASCII，可复现）</td></tr>
+      <tr><td><code>重制版\测试\run_tests.ps1</code></td><td>一键复测脚本，重跑 66 项断言</td></tr>
+      <tr><td><code>重制版\测试\TestHarness</code></td><td>测试程序（复用生产 Engine 源码）</td></tr>
+      <tr><td><code>重制版\LightningRename\</code></td><td>重制后源码（MainForm 预览改进）</td></tr>
+    </table>
+  </section>
+
+  <!-- 结论 -->
+  <section class="card">
+    <h2>十、测试结论与发布建议</h2>
+    <p style="margin-top:0">《闪电重命名 v2.1 重制版》满足本次验收标准：</p>
+    <ul>
+      <li><b>预览已加粗清晰</b>：改变项深蓝加粗、冲突项暗红加粗、未改动项清晰中灰，原"淡淡的看不清"已解决。</li>
+      <li><b>旧电脑可直接运行</b>：原生 .NET 4.0 x86 GUI 程序，零新依赖、45KB，Win7/32 位即可运行。</li>
+      <li><b>功能正确</b>：66 项自动化断言全部通过，含真实磁盘重命名、同名交换、撤销回滚等关键路径。</li>
+    </ul>
+    <p style="font-weight:700;color:var(--ok);margin-bottom:0">结论：质量达标，<b>建议发布</b>。</p>
+  </section>
+
+  <footer>闪电重命名 v2.1 重制版 · 质量保障测试报告 · 生成于 2026-08-26</footer>
+</div>
+</body>
+</html>

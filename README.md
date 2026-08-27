@@ -59,7 +59,7 @@
 powershell -ExecutionPolicy Bypass -File .\build.ps1
 ```
 
-产物输出到 `发布版\` 目录。也可直接打开 `LightningRename\LightningRename.csproj` 用 Visual Studio 构建。
+产物输出到 `ReleaseOut\` 目录（已被 .gitignore 忽略；正式发布产物见 GitHub Releases）。也可直接打开 `LightningRename\LightningRename.csproj` 用 Visual Studio 构建。
 
 ## 运行自动化测试
 

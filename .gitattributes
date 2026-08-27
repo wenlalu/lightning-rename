@@ -1,0 +1,9 @@
+# 冻结所有文件的行尾与编码转换，保证本地与远程仓库逐字节一致
+* -text
+
+# 二进制文件显式声明
+*.ico binary
+*.exe binary
+*.png binary
+*.jpg binary
+*.pdf binary
